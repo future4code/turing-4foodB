@@ -1,25 +1,10 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
-import styled from 'styled-components';
-import './TelaLogin.css';
+import { useHistory} from 'react-router-dom';
+import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 23.5rem;
-  height: 55rem;
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-`;
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+import {LogoContainer, Container, FormContainer, TituloEntrar, InputsLogin, BotaoEntrar, LinkCadastro,
+TextoLinkCadastro, Body} from './styles'
+import { Button } from '@material-ui/core'
 
 const TelaLogin = () => {
   const history = useHistory();
@@ -36,16 +21,13 @@ const TelaLogin = () => {
   };
 
   return (
-    <Container>
-      <FormContainer>
-        <img
+   <FormContainer>
+        <LogoContainer
           src={logoinvert}
-          className="imagemlogovermelho"
           alt="logotipo ifuture"
         />
-        <h4 className="style-tittle">Entrar</h4>
-        <TextField
-          className="style-input"
+        <TituloEntrar>Entrar</TituloEntrar>
+        <InputsLogin
           required
           id="outlined-required"
           label="E-mail"
@@ -54,7 +36,7 @@ const TelaLogin = () => {
           // onChange={}
           placeholder="email@email.com"
         />
-        <TextField
+        <InputsLogin
           className="style-input"
           required
           type="password"
@@ -65,14 +47,11 @@ const TelaLogin = () => {
           //onChange={}
           placeholder="Mínimo 6 caracteres"
         />
-        <button onClick={'#'} className="style-button">
-          Entrar
-        </button>
-        <Link to="/cadastro" className="link-text">
-          <p className="style-text">Não possui cadastro? Clique aqui.</p>
-        </Link>
-      </FormContainer>
-    </Container>
+        <BotaoEntrar variant="contained" color="primary" onClick={'#'}>Entrar</BotaoEntrar>
+        <LinkCadastro to="/cadastro">
+          <TextoLinkCadastro>Não possui cadastro? Clique aqui.</TextoLinkCadastro>
+        </LinkCadastro>
+    </FormContainer>
   );
 };
 
