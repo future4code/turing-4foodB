@@ -31,7 +31,7 @@ export const BoxIndividual = styled.div`
 export const BoxPerfil = styled.div`
   padding: 1rem 0;
   width: 100%;
-  background-color: tomato;
+  background-color: #f8f8f8;
 `;
 
 export const BoxEnderecoCadastrado = styled.div`
@@ -57,4 +57,30 @@ export const BoxIndividualEndereco = styled.div`
 export const Pedido = styled.div`
   width: 22.5rem;
   height: 6.875rem;
+  padding: 1rem 0;
+`;
+
+export const BoxDosPedidos = styled.div`
+  width: 22.5rem;
+  border-radius: 8px;
+  border: solid 1px #b8b8b8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+
+export const Icone = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  float: right;
+  padding: 0.8rem;
+
+  :hover {
+    opacity: 0.5;
+  }
+  :active {
+    opacity: 1;
+  }
 `;
