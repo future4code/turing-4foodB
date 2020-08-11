@@ -6,7 +6,8 @@ import logo from '../../assets/imagens/logo.png';
 import { TelaInicialContainer, LogoContainer } from './styles'
 
 const TelaInicial = () => {
-  const history = useHistory()
+  const token = window.localStorage.getItem('token');
+  const history = useHistory();
 
   useEffect(() => {
       sleep()
@@ -17,7 +18,11 @@ const TelaInicial = () => {
     }
     
   sleep(3000).then(() => {
+    if (token !== null) {
+      history.push('/feed');
+    }else {
       history.push("/login")
+    }
   });
 
 return (
