@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField';
 import {Button} from '@material-ui/core'
 
-export const FormContainer = styled.div`
+export const FormContainerCadastro = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,18 +15,18 @@ export const LogoContainer = styled.img`
   margin: 1rem;
 `
 
-export const TituloEntrar = styled.h4`
+export const TituloCadastro = styled.h4`
   margin: 1rem 1rem 2rem 1rem;
 `
 
-export const InputsLogin = styled(TextField)`
+export const InputsCadastro= styled(TextField)`
   width: 21rem;
   height: 4rem;
   margin: 0.5rem 1rem 0.5rem 1rem;
 `
 
-export const BotaoEntrar = styled(Button)`
-   width: 21rem;
+export const BotaoCadastro = styled(Button)`
+  width: 21rem;
   height: 3rem; 
   margin: 0.5rem 1rem 0.5rem 1rem;
   background-color: #e8222e;
