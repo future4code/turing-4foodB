@@ -38,7 +38,9 @@ function TelaLogin() {
       password: password,
     };
     try {
-      const response = await axios.post(`{baseURL}`, loginBody);
+      const response = await axios.post(`${baseUrl}/login`,
+        loginBody,
+      );
       window.localStorage.setItem('token', response.data.token);
       window.localStorage.setItem('user', JSON.stringify(response.data.user));
       alert('Seja bem vindo ao FourFood');
