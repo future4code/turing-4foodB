@@ -1,14 +1,36 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import {HeaderFeed, TituloFeed, FonteTitulo, InputBusca, ContainerFeed, FeedTipos, TipoPrato, 
+    ContainerRestaurantes, BotaoFeed, BotaoCarrinho, BotaoPerfil, FooterProvisorio } from './styles'
+import CardRestaurantes from './CardRestaurantes';
 
 const TelaFeed = () => {
     const history = useHistory()
 
     const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/fourFoodB"
 
-    const irParaRestaurante = () => {
-        history.push("/restaurante")
+    const [arrayRestaurantes, setArrayRestaurantes] = useState([])
+
+    useEffect(() => {
+        mostraRestaurantes()
+    }, [])
+
+    const mostraRestaurantes = () => {
+        const token = window.localStorage.getItem("token")
+        axios.get(`${baseUrl}/restaurants`, {
+            headers: {
+                auth: token
+            }
+        }).then((response) => {
+            setArrayRestaurantes(response.data.restaurants)
+        }).catch((error) => {
+            console.log(error.message)
+        })
+    }
+
+    const irParaRestaurante = (idRestaurante) => {
+        history.push(`/restaurante/${idRestaurante}`)
     }
 
     const irParaCarrinho = () => {
@@ -20,34 +42,38 @@ const TelaFeed = () => {
     }
 
 return (
-    <div>
-        <p>fourFoodB</p>
-        <input placeholder="Restaurante" />
-        <div>
-            <p>Burger</p>
-            <p>Asiática</p>
-            <p>Massas</p>
-            <p>Saudáveis</p>
-        </div>
-        <div>
-            <p>Vinil Butantã</p>
-            <span>50 - 60 minutos</span>
-            <span>Frete: R$6,00</span>
-        </div>
-        <div>
-            <p>Bullger Eldorado</p>
-            <span>30 - 45 minutos</span>
-            <span>Frete: R$6,00</span>
-        </div>
-        <div>
-            <p>Pedido em andamento</p>
-            <p>Bullguer Vila Madalena</p>
-            <p>Subtotal R$67,00</p>
-        </div>
-        <button onClick={irParaRestaurante}>ir para Restaurante X</button>
-        <button onClick={irParaCarrinho}>ir para Carrinho</button>
-        <button onClick={irParaPerfil}>ir para Perfil</button>
-    </div>
+    <ContainerFeed>
+        <HeaderFeed>
+            <TituloFeed>
+                <FonteTitulo>fourFoodB</FonteTitulo>
+            </TituloFeed>
+        </HeaderFeed>
+        <InputBusca placeholder="Restaurante" />
+        <FeedTipos>
+            <TipoPrato>Burger</TipoPrato>
+            <TipoPrato>Asiática</TipoPrato>
+            <TipoPrato>Massas</TipoPrato>
+            <TipoPrato>Saudáveis</TipoPrato>
+            <TipoPrato>Pizzas</TipoPrato>
+        </FeedTipos>
+        <ContainerRestaurantes>
+        {arrayRestaurantes.map((restaurante) => {
+            return <CardRestaurantes 
+            key={restaurante.id}
+            onClickCard={() => irParaRestaurante(restaurante.id)}
+            fotoRestaurante={restaurante.logoUrl}
+            nomeRestaurante={restaurante.name}
+            tempoEntrega={restaurante.deliveryTime}
+            freteEntrega={restaurante.shipping}
+            />
+        })}
+        </ContainerRestaurantes>
+        <FooterProvisorio>
+            <BotaoFeed onClick={'#'}>🏠</BotaoFeed>
+            <BotaoCarrinho onClick={irParaCarrinho}>🛒</BotaoCarrinho>
+            <BotaoPerfil onClick={irParaPerfil}>👤</BotaoPerfil>
+        </FooterProvisorio>
+    </ContainerFeed>
     )  
 }
 

@@ -55,7 +55,7 @@ function App() {
               <Route exact path="/feed">
                 <TelaFeed />
               </Route>
-              <Route exact path="/restaurante">
+              <Route exact path="/restaurante/:idRestaurante">
                 <TelaRestaurante />
               </Route>
               <Route exact path="/perfil">
