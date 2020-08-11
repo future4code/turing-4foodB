@@ -1,23 +1,33 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 
-const TelaInicial = () => {
-    const history = useHistory()
+import logo from '../../assets/imagens/logo.png';
 
-    useEffect(() => {
-        irParaLogin()
-    }, [])
-    
-    const irParaLogin = () => {
-        history.push("/login")
+import { TelaInicialContainer, LogoContainer } from './styles'
+
+const TelaInicial = () => {
+  const history = useHistory()
+
+  useEffect(() => {
+      sleep()
+  }, [])
+  
+  const sleep = (ms) => {
+      return new Promise(resolve => setTimeout(resolve, ms));
     }
+    
+  sleep(3000).then(() => {
+      history.push("/login")
+  });
 
 return (
-    <div>
-        <h1>fourFoodB</h1>
-    </div>
-    )  
+  <TelaInicialContainer>
+    <LogoContainer
+      src={logo}
+      alt="logotipo ifuture"
+    />
+  </TelaInicialContainer>
+  )  
 }
 
 export default TelaInicial

@@ -43,7 +43,6 @@ export const BotaoEntrar = styled(Button)`
   text-transform: none !important;
   font-weight: 600 !important;
 `;
-
 export const TextoLinkCadastro = styled.p`
   margin: 1rem 2rem 1rem 2rem;
   font-size: 1em;
