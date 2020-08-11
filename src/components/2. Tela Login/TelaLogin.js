@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
 import {
   LogoContainer,
-  Container,
   FormContainer,
   TituloEntrar,
   InputsLogin,
   BotaoEntrar,
   LinkCadastro,
   TextoLinkCadastro,
-  Body,
 } from './styles';
-import { Button } from '@material-ui/core';
 import axios from 'axios';
 
 const baseUrl =
@@ -40,8 +37,7 @@ function TelaLogin() {
       password: password,
     };
     try {
-      const response = await axios.post(
-        `https://us-central1-missao-newton.cloudfunctions.net/fourFoodB/login`,
+      const response = await axios.post(`${baseUrl}/login`,
         loginBody,
       );
       window.localStorage.setItem('token', response.data.token);
