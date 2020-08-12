@@ -65,25 +65,15 @@ function TelaCadastroEnd() {
       <AppHeader />
       <FormContainer onSubmit={handleFormValues}>
         <InputsLogin
-          id="nome"
-          required
-          label="Nome"
-          value={form.name}
-          onChange={handleInputChange}
-          name="name"
-          variant="outlined"
-        />
-
-        <InputsLogin
           id="street"
           type="text"
           required
           label="Logradouro"
           value={form.street}
           onChange={handleInputChange}
-          name="rua"
+          name="street"
           variant="outlined"
-        ></InputsLogin>
+        />
 
         <InputsLogin
           id="number"
@@ -91,10 +81,10 @@ function TelaCadastroEnd() {
           type="number"
           label="Numero"
           value={form.number}
-          name="Numero"
+          name="number"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+        />
 
         <InputsLogin
           id="complement"
@@ -102,10 +92,10 @@ function TelaCadastroEnd() {
           type="text"
           label="Apto"
           value={form.complement}
-          name="complemento"
+          name="complement"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+        />
 
         <InputsLogin
           id="neighbourhood"
@@ -113,10 +103,10 @@ function TelaCadastroEnd() {
           type="text"
           label="Bairro"
           value={form.neighbourhood}
-          name="Bairro"
+          name="neighbourhood"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+        />
 
         <InputsLogin
           id="city"
@@ -124,10 +114,10 @@ function TelaCadastroEnd() {
           type="text"
           label="Cidade"
           value={form.city}
-          name="cidade"
+          name="city"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+        />
 
         <InputsLogin
           id="state"
@@ -135,10 +125,10 @@ function TelaCadastroEnd() {
           type="text"
           label="Estado"
           value={form.state}
-          name="estado"
+          name="state"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+        />
 
         <BotaoSalvar
           variant="contained"
