@@ -4,17 +4,57 @@ import {useHistory} from 'react-router-dom';
 import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
 import {LogoContainer, Container, FormContainerCadastroEndereco, TituloCadastroEnd, InputsCadastroEndereco, BotaoCadastroEndereco, LinkCadastro,
-} from './styles'
+form} from './styles'
 
 
-const TelaCadastroEnd = () => {
-    const history = useHistory()
+   //quando actualizar cada uno de esos campos tambem quero atulizar meu form
 
-    const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/fourFoodB"
+      
 
-    const irParaFeed = () => {
-        history.push("/feed")
-    }
+  
+        
+
+
+    const TelaCadastroEnd = () => {
+
+      const history = useHistory();
+      const irParaFeed = () => {
+             history.push("/feed")
+      }
+
+
+      const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/fourFoodB"
+
+     
+
+    const [form, setForm] = useState({
+      rua: '',
+      numero:0,
+      nomebloco:'',
+      bairro:'',
+      cidade:'',
+      estado:''
+    })
+
+
+     const onChangeInput = (event) => {
+       const newValue = event.target.value
+       const fielName = event.target.name
+
+       setForm({...form, [fielName]: newValue})
+     }
+
+     
+
+     
+
+  
+  
+  
+
+  console.log(form)
+
+
     return (
         <FormContainerCadastroEndereco>
 
@@ -30,9 +70,10 @@ const TelaCadastroEnd = () => {
           id="outlined-required"
           label="Logradouro"
           variant="outlined"
-          // value={}
-          // onChange={}
+          value={form['rua']}
+          onChange={onChangeInput}
           placeholder="Rua / Av."
+          name={'rua'}
         />
           
         <InputsCadastroEndereco
@@ -42,9 +83,10 @@ const TelaCadastroEnd = () => {
           label="Numero"
           type="number"
           variant="outlined"
-          //value={}
-          //onChange={}
+          value={form['numero']}
+          onChange={onChangeInput}
           placeholder="Numero"
+          name={'numero'}
         />
       
       <InputsCadastroEndereco
@@ -52,9 +94,10 @@ const TelaCadastroEnd = () => {
           id="outlined-required"
           label="Complemento"
           variant="outlined"
-          // value={}
-          // onChange={}
+          value={form['nomebloco']}
+          onChange={onChangeInput}
           placeholder="Apto. / Bloco"
+          name={'nomebloco'}
         />
          
          <InputsCadastroEndereco
@@ -62,9 +105,10 @@ const TelaCadastroEnd = () => {
           id="outlined-required"
           label="Bairro"
           variant="outlined"
-          // value={}
-          // onChange={}
+          value={form['bairro']}
+          onChange={onChangeInput}
           placeholder="Bairro"
+          name={'bairro'}
         />
 
          <InputsCadastroEndereco
@@ -72,9 +116,10 @@ const TelaCadastroEnd = () => {
           id="outlined-required"
           label="Cidade"
           variant="outlined"
-          // value={}
-          // onChange={}
+          value={form['cidade']}
+          onChange={onChangeInput}
           placeholder="Cidade"
+          name={'cidade'}
         />
                
          <InputsCadastroEndereco
@@ -82,9 +127,10 @@ const TelaCadastroEnd = () => {
           id="outlined-required"
           label="Estado"
           variant="outlined"
-          // value={}
-          // onChange={}
+          value={form['estado']}
+          onChange={onChangeInput}
           placeholder="Estado"
+          name={'estado'}
         />
             
         <BotaoCadastroEndereco variant="contained" color="primary" onClick={irParaFeed}>Salvar</BotaoCadastroEndereco>
