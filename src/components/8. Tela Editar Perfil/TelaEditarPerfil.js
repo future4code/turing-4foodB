@@ -10,7 +10,6 @@ const baseUrl =
   'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB';
 
 function TelaEditaPerfil() {
-
   const history = useHistory();
   const goToProfile = () => {
     history.push('/perfil');
@@ -35,9 +34,9 @@ function TelaEditaPerfil() {
   const editProfile = () => {
     const token = window.localStorage.getItem('token');
     const body = {
-      'name': `${form.name}`,
-      'email': `${form.email}`,
-      'cpf': `${form.cpf}`,
+      name: `${form.name}`,
+      cpf: `${form.email}`,
+      email: `${form.cpf}`,
     };
     const axiosConfig = {
       headers: {
@@ -45,11 +44,7 @@ function TelaEditaPerfil() {
       },
     };
     axios
-      .put(
-        `${baseUrl}/profile`,
-        body,
-        axiosConfig,
-      )
+      .put(`${baseUrl}/profile`, body, axiosConfig)
       .then((response) => {
         console.log(response.data);
         alert('Perfil editado com sucesso');
@@ -95,10 +90,11 @@ function TelaEditaPerfil() {
           variant="outlined"
         ></InputsLogin>
 
-        <BotaoSalvar 
-          variant="contained" 
-          color="primary" 
-          onClick={handleFormValues}>
+        <BotaoSalvar
+          variant="contained"
+          color="primary"
+          onClick={handleFormValues}
+        >
           SALVAR
         </BotaoSalvar>
       </FormContainer>
