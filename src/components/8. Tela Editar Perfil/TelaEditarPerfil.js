@@ -10,9 +10,6 @@ const baseUrl =
   'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB';
 
 function TelaEditaPerfil() {
-  useEffect(() => {
-    editProfile();
-  }, []);
 
   const history = useHistory();
   const goToProfile = () => {
@@ -37,17 +34,20 @@ function TelaEditaPerfil() {
 
   const editProfile = () => {
     const token = window.localStorage.getItem('token');
-
+    const body = {
+      'name': `${form.name}`,
+      'email': `${form.email}`,
+      'cpf': `${form.cpf}`,
+    };
     const axiosConfig = {
       headers: {
         auth: token,
       },
     };
-
     axios
       .put(
-        'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB/profile',
-        form,
+        `${baseUrl}/profile`,
+        body,
         axiosConfig,
       )
       .then((response) => {
@@ -55,7 +55,7 @@ function TelaEditaPerfil() {
         alert('Perfil editado com sucesso');
       })
       .catch((error) => {
-        console.log(error);
+        console.log('Algo errado não está certo' + error);
       });
   };
 
@@ -64,7 +64,7 @@ function TelaEditaPerfil() {
       <AppHeader />
       <FormContainer onSubmit={handleFormValues}>
         <InputsLogin
-          id="outlined-required"
+          id="nome"
           required
           label="Nome"
           value={form.name}
@@ -74,7 +74,7 @@ function TelaEditaPerfil() {
         />
 
         <InputsLogin
-          id="outlined-required"
+          id="email"
           required
           type="email"
           label="E-mail"
@@ -85,7 +85,7 @@ function TelaEditaPerfil() {
         ></InputsLogin>
 
         <InputsLogin
-          id="outlined-required"
+          id="cpf"
           required
           type="number"
           label="CPF"
@@ -95,7 +95,10 @@ function TelaEditaPerfil() {
           variant="outlined"
         ></InputsLogin>
 
-        <BotaoSalvar variant="contained" color="primary" type="Submit">
+        <BotaoSalvar 
+          variant="contained" 
+          color="primary" 
+          onClick={handleFormValues}>
           SALVAR
         </BotaoSalvar>
       </FormContainer>
