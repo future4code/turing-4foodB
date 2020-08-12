@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import AppHeader from '../AppHeader';
 
 const TelaEditarEnd = () => {
     const history = useHistory()
@@ -13,7 +14,7 @@ const TelaEditarEnd = () => {
 
 return (
     <div>
-        <p>Endereço</p>
+        <AppHeader />
         <input placeholder="Logradouro" />
         <input placeholder="Número" />
         <input placeholder="Complemento" />

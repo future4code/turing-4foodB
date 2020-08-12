@@ -11,6 +11,8 @@ import {
   Icone,
 } from './styles';
 import edit from '../../assets/botoes/edit.png';
+import AppFooter from '../AppFooter';
+import AppHeader from '../AppHeader';
 
 const TelaPerfil = () => {
   const baseUrl = `https://us-central1-missao-newton.cloudfunctions.net/fourFoodB`;
@@ -72,9 +74,7 @@ const TelaPerfil = () => {
 
   return (
     <>
-      <div>
-        <h3>Meu perfil</h3>
-      </div>
+      <AppHeader />
       <BoxPerfil>
         <Icone onClick={irParaEditarPerfil} src={edit} />
         <BoxIndividual>{profile.name}</BoxIndividual>
@@ -105,6 +105,7 @@ const TelaPerfil = () => {
             })
           : 'Você não realizou nenhum pedido '}
       </div>
+      <AppFooter />
     </>
   );
 };

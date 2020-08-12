@@ -5,6 +5,7 @@ import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
 import {LogoContainer, Container, FormContainerCadastroEndereco, TituloCadastroEnd, InputsCadastroEndereco, BotaoCadastroEndereco, LinkCadastro,
 } from './styles'
+import AppHeader from '../AppHeader';
 
 
 const TelaCadastroEnd = () => {
@@ -17,7 +18,7 @@ const TelaCadastroEnd = () => {
     }
     return (
         <FormContainerCadastroEndereco>
-
+        <AppHeader />
         <LogoContainer
           src={logoinvert}
           alt="logotipo ifuture"

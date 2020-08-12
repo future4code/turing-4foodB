@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import AppHeader from '../AppHeader';
 
 const TelaEditarPerfil = () => {
     const history = useHistory()
@@ -13,7 +14,7 @@ const TelaEditarPerfil = () => {
 
 return (
     <div>
-        <p>Editar</p>
+        <AppHeader />
         <input placeholder="Nome" />
         <input placeholder="Email" />
         <input placeholder="CPF" />
