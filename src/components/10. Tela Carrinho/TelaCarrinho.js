@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import AppFooter from '../AppFooter';
+import AppHeader from '../AppHeader';
 
 const TelaCarrinho = () => {
     const history = useHistory()
@@ -17,7 +19,7 @@ const TelaCarrinho = () => {
 
 return (
     <div>
-        <p>Meu Carrinho</p>
+        <AppHeader />
         <div>
             <p>Endereço de entrega</p>
             <p>Rua Alessandra Vieira, 42</p>
@@ -52,8 +54,7 @@ return (
             <label for="Cartão de crédito">Cartão de crédito</label>
         </div>
         <button>Confirmar</button>
-        <button onClick={irParaFeed}>ir para Feed</button>
-        <button onClick={irParaPerfil}>ir para Perfil</button>
+        <AppFooter />
     </div>
     )  
 }

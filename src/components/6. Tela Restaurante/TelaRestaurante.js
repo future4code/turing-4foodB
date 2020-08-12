@@ -5,6 +5,7 @@ import { ContainerRestaurante, HeaderRestaurante, TituloRestaurante, FonteTitulo
     ContainerInfosRestaurante, ContainerMenu, FooterProvisorio, BotaoCarrinho, BotaoFeed, 
     BotaoPerfil, InfosFoto, InfosNome, InfosCategoria, InfosEntrega, InfosFrete, InfosEndereco } from './styles';
 import CardItemMenu from './CardItemMenu'
+import AppHeader from '../AppHeader';
 
 const TelaRestaurante = () => {
     const history = useHistory()
@@ -48,11 +49,7 @@ const TelaRestaurante = () => {
 
 return (
     <ContainerRestaurante>
-        <HeaderRestaurante>
-            <TituloRestaurante>
-                <FonteTitulo>Restaurante</FonteTitulo>
-            </TituloRestaurante>
-        </HeaderRestaurante>
+        <AppHeader />
         <ContainerInfosRestaurante>
             <InfosFoto src={InfosRestaurante.logoUrl} alt="foto restaurante" />
             <InfosNome>{InfosRestaurante.name}</InfosNome> 
@@ -78,11 +75,6 @@ return (
             <input type="number" />
             <button>Adicionar ao carrinho</button>
         </div>
-        <FooterProvisorio>
-            <BotaoFeed onClick={irParaFeed}>🏠</BotaoFeed>
-            <BotaoCarrinho onClick={irParaCarrinho}>🛒</BotaoCarrinho>
-            <BotaoPerfil onClick={irParaPerfil}>👤</BotaoPerfil>
-        </FooterProvisorio>
     </ContainerRestaurante>
     )  
 }

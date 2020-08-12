@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
 import {LogoContainer, Container, FormContainerCadastroEndereco, TituloCadastroEnd, InputsCadastroEndereco, BotaoCadastroEndereco, LinkCadastro,
-form} from './styles'
+import AppHeader from '../AppHeader';
 
 
    //quando actualizar cada uno de esos campos tambem quero atulizar meu form
@@ -57,7 +57,7 @@ form} from './styles'
 
     return (
         <FormContainerCadastroEndereco>
-
+        <AppHeader />
         <LogoContainer
           src={logoinvert}
           alt="logotipo ifuture"

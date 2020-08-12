@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 import {HeaderFeed, TituloFeed, FonteTitulo, InputBusca, ContainerFeed, FeedTipos, TipoPrato, 
     ContainerRestaurantes, BotaoFeed, BotaoCarrinho, BotaoPerfil, FooterProvisorio,} from './styles'
 import CardRestaurantes from './CardRestaurantes';
+import AppFooter from '../AppFooter';
+import AppHeader from '../AppHeader';
 
 const TelaFeed = () => {
     const history = useHistory()
@@ -43,11 +45,7 @@ const TelaFeed = () => {
 
 return (
     <ContainerFeed>
-        <HeaderFeed>
-            <TituloFeed>
-                <FonteTitulo>fourFoodB</FonteTitulo>
-            </TituloFeed>
-        </HeaderFeed>
+        <AppHeader />
         <InputBusca placeholder="Restaurante" />
         <FeedTipos>
             <TipoPrato>Burger</TipoPrato>
@@ -68,11 +66,7 @@ return (
             />
         })}
         </ContainerRestaurantes>
-        <FooterProvisorio>
-            <BotaoFeed onClick={'#'}>🏠</BotaoFeed>
-            <BotaoCarrinho onClick={irParaCarrinho}>🛒</BotaoCarrinho>
-            <BotaoPerfil onClick={irParaPerfil}>👤</BotaoPerfil>
-        </FooterProvisorio>
+        <AppFooter />
     </ContainerFeed>
     )  
 }
