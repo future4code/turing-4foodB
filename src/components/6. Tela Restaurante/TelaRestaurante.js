@@ -17,10 +17,17 @@ const TelaRestaurante = () => {
     const [idItemSelecionado, setIdItemSelecionado] = useState("")
     const [qtdItemSelecionado, setQtdItemSelecionado] = useState(0)
     const [itensNoCarrinho, setItensNoCarrinho] = useState([])
+    const [carrinhoAtual, setCarrinhoAtual] = useState([])
 
     useEffect(() => {
         mostraPratos()
-    }, [])
+        // if (localStorage.carrinho) {
+        //     alert("entrou no if")
+        //     setCarrinhoAtual(localStorage.getItem("carrinho"))
+        //     setItensNoCarrinho(carrinhoAtual)
+        // }  
+        localStorage.setItem("carrinho", JSON.stringify(itensNoCarrinho))
+    }, [itensNoCarrinho])
 
     const mostraPratos = () => {
         const token = window.localStorage.getItem("token")
@@ -64,16 +71,18 @@ const TelaRestaurante = () => {
                 if (produto.id === idEQuantidade.id){
                     alert("Adicionado ao carrinho!")
                     setEscolheQuantidade(!escolheQuantidade)
+                    localStorage.setItem("carrinho", JSON.stringify(itensNoCarrinho))
                     return {...produto, quantity: Number(produto.quantity) + Number(idEQuantidade.quantity)}
                 }
                 return produto
             })
             return setItensNoCarrinho(novoCarrinho)
         }
+        
     }
 
     const mostraArray = () => {
-        console.log(itensNoCarrinho)
+        console.log(carrinhoAtual)
     }
 
 return (
