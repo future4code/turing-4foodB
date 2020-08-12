@@ -3,8 +3,15 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
-import {LogoContainer, Container, FormContainerCadastroEndereco, TituloCadastroEnd, InputsCadastroEndereco, BotaoCadastroEndereco, LinkCadastro,
-import AppHeader from '../AppHeader';
+import { 
+  LogoContainer,
+  FormContainerCadastroEndereco, 
+  TituloCadastroEnd, 
+  InputsCadastroEndereco, 
+  BotaoCadastroEndereco, 
+  LinkCadastro,
+} from './styles';
+import AppHeader from '../AppHeader'
 
 
    //quando actualizar cada uno de esos campos tambem quero atulizar meu form

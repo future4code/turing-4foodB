@@ -1,37 +1,5 @@
 import styled from 'styled-components'
 
-export const HeaderRestaurantes = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
-    width: 22.5rem;
-    height: 4rem;
-`
-export const BotaoCarrinho = styled.div`
-    cursor: pointer;
-    font-size: 1.688rem;
-    object-fit: contain;
-`
-export const BotaoFeed = styled.div`
-    cursor: pointer;
-    font-size: 1.688rem;
-    object-fit: contain;
-`
-export const BotaoPerfil = styled.div`
-    cursor: pointer;
-    font-size: 1.688rem;
-    object-fit: contain;
-`
-export const FooterProvisorio = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 22.5rem;
-    height: 3.063rem;
-    box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2), 0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
-`
 export const ContainerInfosRestaurante = styled.div`
 
 `
@@ -46,13 +14,7 @@ export const ContainerMenu = styled.div`
 export const ContainerRestaurante = styled.div`
 
 `
-export const FonteTitulo = styled.p`
-
-`
 export const HeaderRestaurante = styled.div`
-
-`
-export const TituloRestaurante = styled.p`
 
 `
 export const CardItem = styled.div`
@@ -96,5 +58,21 @@ export const InfosFrete = styled.span`
 
 `
 export const InfosEntrega = styled.span`
+
+`
+export const ContainerQuantidade = styled.div`
+    background-color: green;
+    position: absolute;
+    z-index: 1;
+    top: 50vh;
+    padding: 10px;
+`
+export const TextoQuantidade = styled.p`
+
+`
+export const InputQuantidade = styled.input`
+
+`
+export const BotaoQuantidade = styled.button`
 
 `

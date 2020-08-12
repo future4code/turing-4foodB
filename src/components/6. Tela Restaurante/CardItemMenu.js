@@ -1,6 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import {useHistory} from 'react-router-dom';
+import React from 'react';
 import {CardItem, FotoItem, NomeItem, DescricaoItem, PrecoItem} from './styles'
 
 const CardItemMenu = (props) => {
@@ -11,7 +9,7 @@ const CardItemMenu = (props) => {
             <NomeItem>{props.nomeItem}</NomeItem>
             <DescricaoItem>{props.descricaoItem} minutos</DescricaoItem>
             <PrecoItem>Frete R${props.precoItem}</PrecoItem>
-            <button>adicionar</button>
+            <button onClick={props.adicionaItem}>adicionar</button>
         </CardItem>
     )
 }

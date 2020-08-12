@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import {HeaderFeed, TituloFeed, FonteTitulo, InputBusca, ContainerFeed, FeedTipos, TipoPrato, 
-    ContainerRestaurantes, BotaoFeed, BotaoCarrinho, BotaoPerfil, FooterProvisorio,} from './styles'
+import {InputBusca, ContainerFeed, FeedTipos, TipoPrato, ContainerRestaurantes} from './styles'
 import CardRestaurantes from './CardRestaurantes';
 import AppFooter from '../AppFooter';
 import AppHeader from '../AppHeader';
@@ -33,14 +32,6 @@ const TelaFeed = () => {
 
     const irParaRestaurante = (idRestaurante) => {
         history.push(`/restaurante/${idRestaurante}`)
-    }
-
-    const irParaCarrinho = () => {
-        history.push("/carrinho")
-    }
-
-    const irParaPerfil = () => {
-        history.push("/perfil")
     }
 
 return (
