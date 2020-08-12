@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -23,12 +24,6 @@ export const TituloEntrar = styled.h4`
 export const InputsLogin = styled(TextField)`
   width: 21rem;
   height: 4rem;
-  margin: 0.5rem 1rem 0.5rem 1rem;
-`;
-
-export const InputsPassword = styled(TextField)`
-  width: 21rem;
-  height: 5rem;
   margin: 0.5rem 1rem 0.5rem 1rem;
 `;
 
