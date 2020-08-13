@@ -40,10 +40,15 @@ export const EnderecoRestauranteCont = styled.div`
 `;
 
 export const RestauranteNome = styled.p`
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0;
   color: #e8222e;
   letter-spacing: -0.39px;
   font-weight: 600;
+`;
+
+export const RestauranteEndereco = styled.p`
+  color: #b8b8b8!important;
+  margin: 0 0 0.5rem 0;
 `;
 
 export const PedidosContainer = styled.div`
@@ -59,4 +64,10 @@ export const CardProduto = styled.div`
   height: 7rem;
   border-radius: 8px;
   border: solid 1px #b8b8b8;
+  overflow: auto;
+`;
+
+export const FotoProduto = styled.img`
+  width: 6rem;
+  height: 7rem;
 `;
