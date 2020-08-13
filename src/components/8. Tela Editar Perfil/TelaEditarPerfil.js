@@ -5,6 +5,7 @@ import { FormContainer, InputsLogin, InputsNome, BotaoSalvar } from './styles';
 import axios from 'axios';
 import AppHeader from '../AppHeader/index.js';
 import { useForm } from '../hooks/useForm.js';
+import TextField from "@material-ui/core/TextField";
 
 const baseUrl =
   'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB';
@@ -14,6 +15,12 @@ function TelaEditaPerfil() {
   const goToProfile = () => {
     history.push('/perfil');
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('token') === null) {
+      history.push('/login');
+    }
+  });
 
   const { form, onChange } = useForm({
     name: '',
@@ -35,8 +42,8 @@ function TelaEditaPerfil() {
     const token = window.localStorage.getItem('token');
     const body = {
       name: `${form.name}`,
-      cpf: `${form.email}`,
-      email: `${form.cpf}`,
+      email: `${form.email}`,
+      cpf: `${form.cpf}`,
     };
     const axiosConfig = {
       headers: {
@@ -53,6 +60,30 @@ function TelaEditaPerfil() {
         console.log('Algo errado não está certo' + error);
       });
   };
+//pegar perfil 
+  const [profile, setProfile] = useState('');
+  const getProfile = () => {
+    const token = window.localStorage.getItem('token');
+
+    const axiosConfig = {
+      headers: {
+        auth: token,
+      },
+    };
+
+    axios
+      .get(`${baseUrl}/profile`, axiosConfig)
+      .then((response) => {
+        setProfile(response.data.user);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <div>
@@ -61,34 +92,47 @@ function TelaEditaPerfil() {
         <InputsLogin
           id="nome"
           required
-          label="Nome"
+          label= "Nome"
+          placeholder= {profile.name}
           value={form.name}
           onChange={handleInputChange}
           name="name"
           variant="outlined"
+          InputLabelProps={{
+            shrink: true
+          }}
         />
-
+        
         <InputsLogin
           id="email"
           required
           type="email"
           label="E-mail"
+          placeholder= {profile.email}
           value={form.email}
           name="email"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
 
         <InputsLogin
           id="cpf"
           required
           type="number"
-          label="CPF"
+          label="cpf"
+          placeholder= {profile.cpf}
           value={form.cpf}
           name="cpf"
           onChange={handleInputChange}
           variant="outlined"
-        ></InputsLogin>
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
+
 
         <BotaoSalvar
           variant="contained"
