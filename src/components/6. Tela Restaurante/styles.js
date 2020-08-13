@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ContainerMenu = styled.div`
-    height: 25rem;
+    height: 17.8rem;
     width: 22.5rem;
     overflow: auto;
 `

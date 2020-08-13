@@ -1,22 +1,5 @@
 import styled from 'styled-components';
 
-export const Titulo = styled.h1`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 8rem;
-  height: 45rem;
-  font-family: Roboto;
-  font-size: 1rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  text-align: center;
-  color: var(--black);
-`;
-
 export const BoxIndividual = styled.div`
   margin-bottom: 0.25rem;
   margin-left: 1rem;
@@ -31,6 +14,7 @@ export const BoxIndividual = styled.div`
 export const BoxPerfil = styled.div`
   padding: 1rem 0;
   width: 100%;
+  margin: 0 0 0 0;
   background-color: #f8f8f8;
 `;
 
@@ -39,7 +23,6 @@ export const BoxEnderecoCadastrado = styled.div`
   height: 4rem;
   padding: 1rem 0;
   align-items: center;
-
   background-color: #eeeeee;
 `;
 
@@ -58,6 +41,12 @@ export const Pedido = styled.div`
   width: 22.5rem;
   height: 6.875rem;
   padding: 1rem 0;
+`;
+export const Historico = styled.div`
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 `;
 
 export const BoxDosPedidos = styled.div`

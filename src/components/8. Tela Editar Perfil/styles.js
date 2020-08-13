@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 
 export const FormContainer = styled.div`
   display: flex;
+  height: 35rem;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 1rem 0 0 0;
 `;
 
 export const LogoContainer = styled.img`

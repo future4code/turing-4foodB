@@ -1,19 +1,13 @@
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-`;
-
-export const LogoContainer = styled.img`
-  width: 7rem;
-  height: 4rem;
-  margin: 1rem;
+  height: 36rem;
+  margin-top: 0rem;
 `;
 
 export const TituloEntrar = styled.h4`
