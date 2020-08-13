@@ -1,22 +1,11 @@
 import styled from 'styled-components'
 
-export const ContainerInfosRestaurante = styled.div`
-
-`
-export const ContainerItemMenu = styled.div`
-
-`
 export const ContainerMenu = styled.div`
     height: 25rem;
     width: 22.5rem;
     overflow: auto;
 `
-export const ContainerRestaurante = styled.div`
 
-`
-export const HeaderRestaurante = styled.div`
-
-`
 export const CardItem = styled.div`
     width: 20.5rem;
     height: 7rem;
