@@ -26,6 +26,10 @@ const TelaRestaurante = () => {
   const [escolheQuantidade, setEscolheQuantidade] = useState(false)
   const [idItemSelecionado, setIdItemSelecionado] = useState("")
   const [qtdItemSelecionado, setQtdItemSelecionado] = useState(0)
+  const [fotoItemSelecionado, setFotoItemSelecionado] = useState("")
+  const [nomeItemSelecionado, setNomeItemSelecionado] = useState("")
+  const [descricaoItemSelecionado, setDescricaoItemSelecionado] = useState("")
+  const [precoItemSelecionado, setPrecoItemSelecionado] = useState(0)
   const [itensNoCarrinho, setItensNoCarrinho] = useState([])
 
   useEffect(() => {
@@ -58,37 +62,53 @@ const TelaRestaurante = () => {
     setQtdItemSelecionado(event.target.value)
   }
 
-  const abreEscolheQuantidade = (idItem) => {
+  const abreEscolheQuantidade = (idItem, fotoItem, nomeItem, descricaoItem, precoItem) => {
     setEscolheQuantidade(!escolheQuantidade)
     setIdItemSelecionado(idItem)
+    setFotoItemSelecionado(fotoItem)
+    setNomeItemSelecionado(nomeItem)
+    setDescricaoItemSelecionado(descricaoItem)
+    setPrecoItemSelecionado(precoItem)
   }
 
   const adicionaAoCarrinho = () => {
-    const idEQuantidade = {
+    const infosItemERestaurante = {
       id: idItemSelecionado,
-      quantity: Number(qtdItemSelecionado)
+      quantity: Number(qtdItemSelecionado),
+      price: Number(precoItemSelecionado),
+      name: nomeItemSelecionado,
+      description: descricaoItemSelecionado,
+      photoUrl: fotoItemSelecionado,
+      restaurantName:InfosRestaurante.name,
+      restaurantAddress:InfosRestaurante.address,
+      restaurantDeliveryTime:InfosRestaurante.deliveryTime,
+      restaurantShipping:InfosRestaurante.shipping,
     }
     const produtoNoCarrinho = itensNoCarrinho.find(
-      produto => produto.id === idEQuantidade.id
+      produto => produto.id === infosItemERestaurante.id
     )
     let novoCarrinho = [...itensNoCarrinho]
     
     if (produtoNoCarrinho === undefined) {
-      setItensNoCarrinho([...itensNoCarrinho, idEQuantidade])
+      setItensNoCarrinho([...itensNoCarrinho, infosItemERestaurante])
       alert("Adicionado ao carrinho!")
       setEscolheQuantidade(!escolheQuantidade)
     } else {
       novoCarrinho = itensNoCarrinho.map((produto) => {
-        if (produto.id === idEQuantidade.id){
+        if (produto.id === infosItemERestaurante.id){
           alert("Adicionado ao carrinho!")
           setEscolheQuantidade(!escolheQuantidade)
           localStorage.setItem("carrinho", JSON.stringify(itensNoCarrinho))
-          return {...produto, quantity: Number(produto.quantity) + Number(idEQuantidade.quantity)}
+          return {...produto, quantity: Number(produto.quantity) + Number(infosItemERestaurante.quantity)}
         }
         return produto
       })
       return setItensNoCarrinho(novoCarrinho)
     }  
+  }
+
+  const mostraConsole = () => {
+    console.log(InfosRestaurante)
   }
 
 return (
@@ -102,7 +122,7 @@ return (
       <InfosFrete>Frete R${InfosRestaurante.shipping}</InfosFrete>
       <InfosEndereco>{InfosRestaurante.address}</InfosEndereco>
     </div>
-
+    <button onClick={mostraConsole}>mostra console</button>
     <ContainerMenu>
       {arrayItensMenu.map((item) => {
         return <CardItemMenu 
@@ -112,7 +132,7 @@ return (
         descricaoItem={item.description}
         precoItem={item.price}
         categoriaItem={item.category}
-        adicionaItem={() => abreEscolheQuantidade(item.id)}
+        adicionaItem={() => abreEscolheQuantidade(item.id, item.photoUrl, item.name, item.description, item.price)}
         />
       })}
     </ContainerMenu>
