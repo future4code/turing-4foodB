@@ -14,7 +14,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { green } from '@material-ui/core/colors';
 import { Body, Container } from './styles';
-
+import AppFooter from '../src/components/AppFooter';
+import AppHeader from '../src/components/AppHeader';
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#e8222e' },
@@ -68,7 +69,9 @@ function App() {
                 <TelaEditarEnd />
               </Route>
               <Route exact path="/carrinho">
+                <AppHeader />
                 <TelaCarrinho />
+                <AppFooter />
               </Route>
               <Route path="/">
                 <h1>Erro 404 - Página não encontrada</h1>

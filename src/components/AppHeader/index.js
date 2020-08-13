@@ -30,7 +30,10 @@ export default function AppHeader () {
       break;
     case '/endereço':
       setTitulo('Endereço')
-      break;   
+      break;
+    case '/carrinho':
+      setTitulo('Meu carrinho')
+      break;     
     default:
       setTitulo('')
     }

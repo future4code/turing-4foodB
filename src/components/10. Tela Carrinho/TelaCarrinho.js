@@ -1,62 +1,85 @@
 import React, {useState, useEffect} from 'react';
+
 import axios from 'axios';
-import {useHistory} from 'react-router-dom';
-import AppFooter from '../AppFooter';
-import AppHeader from '../AppHeader';
+import { baseUrl } from '../../constants/axios'
 
-const TelaCarrinho = () => {
-    const history = useHistory()
+import { 
+  CarrinhoContainer,
+  EnderecoContainer,
+  EnderecoTexto,
+  CardProduto,
+  CarrinhoVazioText,
+  PerfilTexto,
+  EnderecoRestauranteCont,
+  RestauranteNome,
+  PedidosContainer,
+} from './styles'
 
-    const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/fourFoodB"
+export default function TelaCarrinho () {
+  const [itensNoCarrinho, setItensNoCarrinho] = useState([])
+  const [perfil, setPerfil] = useState('');
 
-    const irParaFeed = () => {
-        history.push("/feed")
-    }
+  useEffect(() => {
+    if (localStorage.carrinho) {
+      const carrinhoRecuperado = (localStorage.getItem("carrinho"))
+      setItensNoCarrinho(JSON.parse(carrinhoRecuperado))
+    };
+    pegaPerfil()  
+  }, [])
 
-    const irParaPerfil = () => {
-        history.push("/perfil")
-    }
+  const pegaPerfil = () => {
+    const token = window.localStorage.getItem('token');
+    const axiosConfig = {
+      headers: {
+        auth: token,
+      },
+    };
+    axios
+      .get(
+        `${baseUrl}profile`, 
+        axiosConfig
+        )
+      .then((response) => {
+        setPerfil(response.data.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+const carrinho = itensNoCarrinho.length !== 0 ? 
+  <div><CarrinhoVazioText>Carrinho com produtos</CarrinhoVazioText>
+  {/* {itensNoCarrinho.map((item) => {
+    return <CardProduto key={item.id}>
+      <div>{item.photoUrl}</div>
+      <img src={item.photoUrl} alt="boohoo" />
+    </CardProduto>
+  })} */}
+  </div>
+  : <CarrinhoVazioText>Carrinho vazio</CarrinhoVazioText>
+console.log(itensNoCarrinho)
 return (
-    <div>
-        <AppHeader />
-        <div>
-            <p>Endereço de entrega</p>
-            <p>Rua Alessandra Vieira, 42</p>
-        </div>
-        <p>Bullguer Vila Madadela</p>
-        <p>R. Fradique Coutinho, 1136 - Vila Madalena</p>
-        <p>30 - 45 min</p>
-        <div>
-            <img src="" alt="foto outro hamburger" />
-            <p>Stencil</p>
-            <p>2</p>
-            <p>Pão, carne, queijo, cebola roxa, tomate, alface e molho</p>
-            <p>R$23,00</p>
-            <button>adicionar</button>
-        </div>
-        <div>
-            <img src="" alt="foto batata frita" />
-            <p>Cheese Fries</p>
-            <p>Porção de fritas temperadas com páprica e queijo derretido</p>
-            <p>R$15,00</p>
-            <button>adicionar</button>
-        </div>
-        <p>Frete R$6,00</p>
-        <span>SUBTOTAL</span>
-        <span>R$67,00</span>
-        <p>Forma de pagamento</p>
-        <hr />
-        <div>
-            <input type="radio" value="Dinheiro" id ="dinheiro" name="pagamento" checked />
-            <label for="Dinheiro">Dinheiro</label>
-            <input type="radio" value="Cartão de crédito" id="cartão" name="pagamento" />
-            <label for="Cartão de crédito">Cartão de crédito</label>
-        </div>
-        <button>Confirmar</button>
-        <AppFooter />
-    </div>
-    )  
+  <CarrinhoContainer>
+
+    <EnderecoContainer>
+      <EnderecoTexto>Endereço de entrega</EnderecoTexto>
+      <PerfilTexto>{perfil.address}</PerfilTexto>
+    </EnderecoContainer>
+    
+    <EnderecoRestauranteCont>
+      <RestauranteNome>Nome do restaurante</RestauranteNome>
+      <EnderecoTexto>Endereço de entrega</EnderecoTexto>
+    </EnderecoRestauranteCont>
+
+    <PedidosContainer>
+      <CardProduto>Carrinho com produtos
+
+      </CardProduto>
+    </PedidosContainer>
+
+
+    
+  </CarrinhoContainer>
+  )  
 }
 
-export default TelaCarrinho
