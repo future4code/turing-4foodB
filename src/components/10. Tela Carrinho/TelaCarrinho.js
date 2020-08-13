@@ -13,6 +13,8 @@ import {
   EnderecoRestauranteCont,
   RestauranteNome,
   PedidosContainer,
+  FotoProduto,
+  RestauranteEndereco,
 } from './styles'
 
 export default function TelaCarrinho () {
@@ -48,16 +50,24 @@ export default function TelaCarrinho () {
   };
 
 const carrinho = itensNoCarrinho.length !== 0 ? 
-  <div><CarrinhoVazioText>Carrinho com produtos</CarrinhoVazioText>
-  {/* {itensNoCarrinho.map((item) => {
-    return <CardProduto key={item.id}>
-      <div>{item.photoUrl}</div>
-      <img src={item.photoUrl} alt="boohoo" />
+  <div>
+    <EnderecoRestauranteCont>
+      <RestauranteNome>{itensNoCarrinho[0].restaurantName}</RestauranteNome>
+      <RestauranteEndereco>{itensNoCarrinho[0].restaurantAddress}</RestauranteEndereco>
+    </EnderecoRestauranteCont>
+  {itensNoCarrinho.map((item) => {
+    return (
+    <CardProduto>
+      <FotoProduto src={item.photoUrl} />
+      <p>{item.name}</p>
+      <p>{item.description}</p>
+      <p>{item.price}</p>
+      <p>{item.quantity}</p>
     </CardProduto>
-  })} */}
+  )})}
   </div>
   : <CarrinhoVazioText>Carrinho vazio</CarrinhoVazioText>
-console.log(itensNoCarrinho)
+
 return (
   <CarrinhoContainer>
 
@@ -66,15 +76,8 @@ return (
       <PerfilTexto>{perfil.address}</PerfilTexto>
     </EnderecoContainer>
     
-    <EnderecoRestauranteCont>
-      <RestauranteNome>Nome do restaurante</RestauranteNome>
-      <EnderecoTexto>Endereço de entrega</EnderecoTexto>
-    </EnderecoRestauranteCont>
-
     <PedidosContainer>
-      <CardProduto>Carrinho com produtos
-
-      </CardProduto>
+      {carrinho}
     </PedidosContainer>
 
 
