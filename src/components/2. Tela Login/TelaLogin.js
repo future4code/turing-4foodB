@@ -79,6 +79,8 @@ function TelaLogin() {
       proximaPagina();
     } catch (error) {
       console.log(error);
+      setValues({email: '',
+      password: '',})
       alert('Erro ao logar, usuário não autorizado');
     }
   };
