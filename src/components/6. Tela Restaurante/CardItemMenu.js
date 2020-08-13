@@ -9,6 +9,7 @@ const CardItemMenu = (props) => {
             <NomeItem>{props.nomeItem}</NomeItem>
             <DescricaoItem>{props.descricaoItem} minutos</DescricaoItem>
             <PrecoItem>Frete R${props.precoItem}</PrecoItem>
+            
             <button onClick={props.adicionaItem}>adicionar</button>
         </CardItem>
     )
