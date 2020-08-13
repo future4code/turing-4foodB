@@ -18,6 +18,12 @@ import AppHeader from '../AppHeader';
 const TelaPerfil = () => {
   const baseUrl = `https://us-central1-missao-newton.cloudfunctions.net/fourFoodB`;
 
+  useEffect(() => {
+    if (localStorage.getItem('token') === null) {
+      history.push('/login');
+    }
+  });
+
   const [profile, setProfile] = useState('');
   const [historicoDePedidos, sethistoricoDePedidos] = useState([]);
 

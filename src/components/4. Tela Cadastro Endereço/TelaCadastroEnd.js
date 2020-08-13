@@ -15,6 +15,12 @@ function TelaCadastroEnd() {
     history.push('/feed');
   };
 
+  useEffect(() => {
+    if (localStorage.getItem('token') === null) {
+      history.push('/login');
+    }
+  });
+
   const { form, onChange } = useForm({
     name: '',
     street: '',
