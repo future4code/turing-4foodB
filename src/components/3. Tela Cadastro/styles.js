@@ -7,12 +7,13 @@ export const FormContainerCadastro = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -3.6rem;
 `
 
 export const LogoContainer = styled.img`
   width: 7rem;
   height: 4rem;
-  margin: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
 `
 
 export const TituloCadastro = styled.h4`

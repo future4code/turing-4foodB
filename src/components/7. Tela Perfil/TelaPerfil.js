@@ -9,6 +9,7 @@ import {
   Pedido,
   BoxDosPedidos,
   Icone,
+  Historico,
 } from './styles';
 import edit from '../../assets/botoes/edit.png';
 import AppFooter from '../AppFooter';
@@ -89,7 +90,7 @@ const TelaPerfil = () => {
       <Pedido>
         Histórico de pedidos <hr></hr>
       </Pedido>
-      <div>
+      <Historico>
         {historicoDePedidos.length > 0
           ? historicoDePedidos.map((order) => {
               const date = new Date(order.expiresAt).toLocaleDateString(
@@ -104,7 +105,7 @@ const TelaPerfil = () => {
               );
             })
           : 'Você não realizou nenhum pedido '}
-      </div>
+      </Historico>
       <AppFooter />
     </>
   );

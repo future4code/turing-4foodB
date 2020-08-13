@@ -5,7 +5,7 @@ export const InputBusca = styled.input`
     height: 3.5rem;
     border-radius: 2px;
     border: solid 1px #b8b8b8;
-    margin: 0.5rem 0 0 0;
+    margin: 1rem 0 0 0;
 `
 export const ContainerFeed = styled.div`
     display: flex;
@@ -17,7 +17,7 @@ export const ContainerFeed = styled.div`
 export const FeedTipos = styled.div`
     display: flex;
     justify-content: space-evenly;
-    height: 2.625rem;
+    height: 3.2rem;
     width: 22.5rem;
     align-items: center;
     overflow: hidden;

@@ -6,11 +6,13 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 export const AppFooterWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  height: 2.5rem;
-  width: 23.5rem;
-  position: absolute;
-  bottom: 0; 
-  margin-bottom: 0.8rem;
+  align-items: center;
+  height: 3rem;
+  width: 22.5rem;
+  position: relative;
+  bottom: 0rem; 
+  box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2), 0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
+  background-color: #ffffff;
 `;
 
 export const HomeIcon = styled(HomeOutlinedIcon)`

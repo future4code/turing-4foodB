@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.js';
-import { FormContainer, InputsLogin, InputsNome, BotaoSalvar } from './styles';
+import { FormContainer, InputsLogin, BotaoSalvar, TituloEntrar } from './styles';
 import axios from 'axios';
 import AppHeader from '../AppHeader/index.js';
 import { useForm } from '../hooks/useForm.js';
@@ -64,6 +64,7 @@ function TelaCadastroEnd() {
     <div>
       <AppHeader />
       <FormContainer onSubmit={handleFormValues}>
+        <TituloEntrar>Meu endereço</TituloEntrar>
         <InputsLogin
           id="street"
           type="text"
