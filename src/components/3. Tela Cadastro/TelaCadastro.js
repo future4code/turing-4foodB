@@ -65,7 +65,7 @@ const TelaCadastro = () => {
         })
         .catch((error) => {
           console.log(error.response.data.message)
-          alert("Cadastro não realizado");
+          alert(error.response.data.message + ", cadastro não realizado");
         })
     };
     

@@ -26,6 +26,7 @@ const TelaFeed = () => {
         }).then((response) => {
             setArrayRestaurantes(response.data.restaurants)
         }).catch((error) => {
+            alert("errororororor")
             console.log(error.message)
         })
     }

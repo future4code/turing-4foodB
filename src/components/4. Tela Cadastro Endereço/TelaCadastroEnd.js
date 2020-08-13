@@ -38,7 +38,6 @@ function TelaCadastroEnd() {
   const handleFormValues = (event) => {
     event.preventDefault();
     editProfile();
-    goToProfile();
   };
   const editProfile = () => {
     const token = window.localStorage.getItem('token');
@@ -60,9 +59,13 @@ function TelaCadastroEnd() {
       .put(`${baseUrl}/address`, body, axiosConfig)
       .then((response) => {
         console.log(response.data);
+        window.localStorage.setItem('token', response.data.token);
+        window.localStorage.setItem('user', JSON.stringify(response.data.user));
         alert('endereco adicionado');
+        goToProfile();
       })
       .catch((error) => {
+        alert("Por favor preencha todos os campos")
         console.log('Algo errado não está certo' + error);
       });
   };

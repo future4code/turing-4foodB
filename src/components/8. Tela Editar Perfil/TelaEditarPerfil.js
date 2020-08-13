@@ -35,7 +35,6 @@ function TelaEditaPerfil() {
   const handleFormValues = (event) => {
     event.preventDefault();
     editProfile();
-    goToProfile();
   };
 
   const editProfile = () => {
@@ -55,9 +54,11 @@ function TelaEditaPerfil() {
       .then((response) => {
         console.log(response.data);
         alert('Perfil editado com sucesso');
+        goToProfile();
       })
       .catch((error) => {
-        console.log('Algo errado não está certo' + error);
+        console.log(`${baseUrl}/profile`, body, axiosConfig);
+        alert("errororor")
       });
   };
 //pegar perfil 

@@ -40,7 +40,6 @@ function EditaTelaCadastroEnd() {
   const handleFormValues = (event) => {
     event.preventDefault();
     editProfile();
-    goToProfile();
   };
   const editProfile = () => {
     const token = window.localStorage.getItem('token');
@@ -63,8 +62,10 @@ function EditaTelaCadastroEnd() {
       .then((response) => {
         console.log(response.data);
         alert('endereco adicionado');
+        goToProfile();
       })
       .catch((error) => {
+        alert("Por favor preencha todos os campos")
         console.log('Algo errado não está certo' + error);
       });
   };
@@ -83,10 +84,10 @@ function EditaTelaCadastroEnd() {
     };
 
     axios
-      .get(`${baseUrl}/profile`, axiosConfig)
+      .get(`${baseUrl}/profile/address`, axiosConfig)
       .then((response) => {
-        setProfile(response.data.user);
-        console.log(response);
+        setProfile(response.data.address);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -105,7 +106,7 @@ function EditaTelaCadastroEnd() {
           type="text"
           required
           label="Logradouro"
-          placeholder= {profile.address}
+          placeholder= {profile.street}
           value={form.street}
           onChange={handleInputChange}
           name="street"
@@ -120,7 +121,7 @@ function EditaTelaCadastroEnd() {
           required
           type="number"
           label="Número"
-          placeholder= {profile.address}
+          placeholder= {profile.number}
           value={form.number}
           name="number"
           onChange={handleInputChange}
@@ -134,7 +135,7 @@ function EditaTelaCadastroEnd() {
           id="complement"
           type="text"
           label="Complemento"
-          placeholder= {profile.address}
+          placeholder= {profile.complement}
           value={form.complement}
           name="complement"
           onChange={handleInputChange}
@@ -149,7 +150,7 @@ function EditaTelaCadastroEnd() {
           required
           type="text"
           label="Bairro"
-          placeholder= {profile.address}
+          placeholder= {profile.neighbourhood}
           value={form.neighbourhood}
           name="neighbourhood"
           onChange={handleInputChange}
@@ -164,7 +165,7 @@ function EditaTelaCadastroEnd() {
           required
           type="text"
           label="Cidade"
-          placeholder= {profile.address}
+          placeholder= {profile.city}
           value={form.city}
           name="city"
           onChange={handleInputChange}
@@ -179,7 +180,7 @@ function EditaTelaCadastroEnd() {
           required
           type="text"
           label="Estado"
-          placeholder= {profile.address}
+          placeholder= {profile.state}
           value={form.state}
           name="state"
           onChange={handleInputChange}
