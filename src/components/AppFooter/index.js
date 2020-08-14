@@ -14,8 +14,8 @@ export default function AppFooter () {
   const history = useHistory();
   const atualUrl = (window.location.pathname); 
 
-  const handleClick = (choise) => {
-    const nav = choise;
+  const handleClick = (choice) => {
+    const nav = choice;
     switch (nav) {
       case 'feed':
         history.push('/feed');

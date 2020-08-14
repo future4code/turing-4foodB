@@ -10,6 +10,7 @@ import TelaPerfil from './components/7. Tela Perfil/TelaPerfil';
 import TelaEditarPerfil from './components/8. Tela Editar Perfil/TelaEditarPerfil';
 import TelaEditarEnd from './components/9. Tela Editar Endereço/TelaEditarEnd';
 import TelaCarrinho from './components/10. Tela Carrinho/TelaCarrinho';
+import TelaBusca from './components/5. Tela Feed/TelaBusca'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { green } from '@material-ui/core/colors';
@@ -58,6 +59,9 @@ function App() {
               </Route>
               <Route exact path="/restaurante/:idRestaurante">
                 <TelaRestaurante />
+              </Route>
+              <Route exact path="/busca">
+                <TelaBusca />
               </Route>
               <Route exact path="/perfil">
                 <TelaPerfil />
