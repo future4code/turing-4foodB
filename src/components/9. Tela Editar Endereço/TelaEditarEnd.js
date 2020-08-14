@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.js';
-import { FormContainer, InputsLogin, InputsNome, BotaoSalvar } from './styles';
+import { 
+  FormContainer, 
+  InputsLogin, 
+  BotaoSalvar 
+} from './styles';
 import axios from 'axios';
 import AppHeader from '../AppHeader/index.js';
 import { useForm } from '../hooks/useForm.js';
 
 const baseUrl =
   'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB';
-
-  
 
 function EditaTelaCadastroEnd() {
   const history = useHistory();
@@ -60,19 +62,13 @@ function EditaTelaCadastroEnd() {
     axios
       .put(`${baseUrl}/address`, body, axiosConfig)
       .then((response) => {
-        console.log(response.data);
-        alert('endereco adicionado');
         goToProfile();
       })
       .catch((error) => {
-        alert("Por favor preencha todos os campos")
-        console.log('Algo errado não está certo' + error);
+        console.log("Por favor preencha todos os campos" + error);
       });
   };
 
-  
-
-  // Pegar Endereço
   const [profile, setProfile] = useState('');
   const getProfile = () => {
     const token = window.localStorage.getItem('token');
@@ -87,7 +83,6 @@ function EditaTelaCadastroEnd() {
       .get(`${baseUrl}/profile/address`, axiosConfig)
       .then((response) => {
         setProfile(response.data.address);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

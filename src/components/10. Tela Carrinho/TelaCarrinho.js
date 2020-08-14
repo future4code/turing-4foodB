@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import axios from 'axios';
@@ -102,39 +101,6 @@ export default function TelaCarrinho () {
 
   const fechaPedido = () => {
 
-    // for (var i = 0; i < itensNoCarrinho.length; i++){
-      
-    //   const pedidoFechado= {
-    //     id: i.id,
-    //     quantity: i.quantity
-    //   }
-    //   console.log(i.id)
-    // }
-
-    // const token = window.localStorage.getItem('token');
-    // const body = {
-    //   // name: `${form.name}`,
-    //   // email: `${form.email}`,
-    //   // cpf: `${form.cpf}`,
-    // };
-    
-    // const axiosConfig = {
-    //   headers: {
-    //     auth: token,
-    //   },
-    // };
-    // axios
-    //   .post(`${baseUrl}restaurants/${itensNoCarrinho[0].restaurantName}/order`, 
-    //     body, 
-    //     axiosConfig)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     localStorage.setItem("carrinho", JSON.stringify(''))
-    //   })
-    //   .catch((error) => {
-    //     console.log(`${baseUrl}/profile`, body, axiosConfig);
-    //     alert(error)
-    //   });
   };
 
 const carrinho = itensNoCarrinho.length !== 0 ? 

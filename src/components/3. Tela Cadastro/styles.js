@@ -8,23 +8,23 @@ export const FormContainerCadastro = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: -3.6rem;
-`
+`;
 
 export const LogoContainer = styled.img`
   width: 7rem;
   height: 4rem;
   margin: 0rem 1rem 1rem 1rem;
-`
+`;
 
 export const TituloCadastro = styled.h4`
   margin: 1rem 1rem 2rem 1rem;
-`
+`;
 
 export const InputsCadastro= styled(TextField)`
   width: 21rem;
   height: 4rem;
   margin: 0.5rem 1rem 0.5rem 1rem;
-`
+`;
 
 export const BotaoCadastro = styled(Button)`
   width: 21rem;
@@ -37,7 +37,7 @@ export const BotaoCadastro = styled(Button)`
   text-transform: none!important;
   font-weight: 600!important;
 
-`
+`;
 
 export const TextoLinkCadastro = styled.p`
   margin: 1rem 2rem 1rem 2rem;

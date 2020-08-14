@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.js';
 import logoinvert from '../../assets/imagens/logoinvert.png';
@@ -7,7 +7,6 @@ import {
   FormContainer,
   TituloEntrar,
   InputsLogin,
-  InputsPassword,
   BotaoEntrar,
   LinkCadastro,
   TextoLinkCadastro,
@@ -99,7 +98,7 @@ function TelaLogin() {
         placeholder="email@email.com"
       />
         
-        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
         <InputLabel htmlFor="password">Senha</InputLabel>
         <OutlinedInput
           id="password"

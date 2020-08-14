@@ -12,7 +12,8 @@ import {
   ContainerQuantidade, 
   TextoQuantidade, 
   InputQuantidade, 
-  BotaoQuantidade } from './styles';
+  BotaoQuantidade 
+} from './styles';
 import CardItemMenu from './CardItemMenu'
 import AppHeader from '../AppHeader';
 
@@ -107,10 +108,6 @@ const TelaRestaurante = () => {
     }  
   }
 
-  const mostraConsole = () => {
-    console.log(InfosRestaurante)
-  }
-
 return (
   <div>
     <AppHeader />
@@ -122,7 +119,7 @@ return (
       <InfosFrete>Frete R${InfosRestaurante.shipping}</InfosFrete>
       <InfosEndereco>{InfosRestaurante.address}</InfosEndereco>
     </div>
-    <button onClick={mostraConsole}>mostra console</button>
+
     <ContainerMenu>
       {arrayItensMenu.map((item) => {
         return <CardItemMenu 

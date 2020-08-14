@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.js';
 import { FormContainer, InputsLogin, BotaoSalvar, TituloEntrar } from './styles';
@@ -58,15 +58,13 @@ function TelaCadastroEnd() {
     axios
       .put(`${baseUrl}/address`, body, axiosConfig)
       .then((response) => {
-        console.log(response.data);
         window.localStorage.setItem('token', response.data.token);
         window.localStorage.setItem('user', JSON.stringify(response.data.user));
         alert('endereco adicionado');
         goToProfile();
       })
       .catch((error) => {
-        alert("Por favor preencha todos os campos")
-        console.log('Algo errado não está certo' + error);
+        console.log("Por favor preencha todos os campos" + error);
       });
   };
   return (

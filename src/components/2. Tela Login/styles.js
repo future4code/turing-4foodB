@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
