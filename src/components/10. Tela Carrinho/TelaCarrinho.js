@@ -14,19 +14,27 @@ import {
   RestauranteNome,
   PedidosContainer,
   FotoProduto,
+  NomeProduto,
+  DescricaoProduto,
+  PrecoProduto,
+  QtdProduto,
   RestauranteEndereco,
+  BotaoRemover,
 } from './styles'
 
 export default function TelaCarrinho () {
   const [itensNoCarrinho, setItensNoCarrinho] = useState([])
   const [perfil, setPerfil] = useState('');
+  const [precoTotal, setPrecoTotal] = useState('');
+  const [frete, setFrete] = useState('');
 
   useEffect(() => {
     if (localStorage.carrinho) {
       const carrinhoRecuperado = (localStorage.getItem("carrinho"))
       setItensNoCarrinho(JSON.parse(carrinhoRecuperado))
     };
-    pegaPerfil()  
+    pegaPerfil()
+    pegaTotal()  
   }, [])
 
   const pegaPerfil = () => {
@@ -49,6 +57,22 @@ export default function TelaCarrinho () {
       });
   };
 
+  const pegaTotal = () => {
+    if (localStorage.carrinho) {
+      const carrinhoRecuperado = (localStorage.getItem("carrinho"))
+      const pegaCarrinho = JSON.parse(carrinhoRecuperado)
+
+      setFrete(pegaCarrinho[0].restaurantShipping)  
+
+      let valorTotal = 0;
+      pegaCarrinho.forEach(item => {
+        valorTotal += (item.price * item.quantity);
+        setPrecoTotal(valorTotal.toFixed(2))
+          
+      });
+    };
+  }
+  
 const carrinho = itensNoCarrinho.length !== 0 ? 
   <div>
     <EnderecoRestauranteCont>
@@ -57,12 +81,13 @@ const carrinho = itensNoCarrinho.length !== 0 ?
     </EnderecoRestauranteCont>
   {itensNoCarrinho.map((item) => {
     return (
-    <CardProduto>
+    <CardProduto key={item.id}>
       <FotoProduto src={item.photoUrl} />
-      <p>{item.name}</p>
-      <p>{item.description}</p>
-      <p>{item.price}</p>
-      <p>{item.quantity}</p>
+      <NomeProduto>{item.name}</NomeProduto>
+      <DescricaoProduto>{item.description}</DescricaoProduto>
+      <PrecoProduto>R${item.price.toFixed(2)}</PrecoProduto>
+      <QtdProduto>{item.quantity}</QtdProduto>
+      <BotaoRemover>remover</BotaoRemover>
     </CardProduto>
   )})}
   </div>
@@ -80,7 +105,11 @@ return (
       {carrinho}
     </PedidosContainer>
 
-
+    <div>
+      <p>SUBTOTAL</p>
+      <p>Frete R${frete}</p>
+      <p>R${precoTotal}</p>
+    </div>
     
   </CarrinhoContainer>
   )  

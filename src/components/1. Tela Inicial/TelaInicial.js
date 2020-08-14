@@ -30,6 +30,7 @@ return (
     <LogoContainer
       src={logo}
       alt="logotipo ifuture"
+      id='Logo'
     />
   </TelaInicialContainer>
   )  
