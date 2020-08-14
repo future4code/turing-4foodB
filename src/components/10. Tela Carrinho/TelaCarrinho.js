@@ -91,7 +91,6 @@ export default function TelaCarrinho () {
       setPrecoTotal(valorTotal.toFixed(2))
       setFrete(valorTotal.toFixed(2))
     }
-   
   }
   
   const removeProdutoCarrinho = (ItemId) => {
@@ -101,6 +100,42 @@ export default function TelaCarrinho () {
     pegaTotal() 
   }
 
+  const fechaPedido = () => {
+
+    // for (var i = 0; i < itensNoCarrinho.length; i++){
+      
+    //   const pedidoFechado= {
+    //     id: i.id,
+    //     quantity: i.quantity
+    //   }
+    //   console.log(i.id)
+    // }
+
+    // const token = window.localStorage.getItem('token');
+    // const body = {
+    //   // name: `${form.name}`,
+    //   // email: `${form.email}`,
+    //   // cpf: `${form.cpf}`,
+    // };
+    
+    // const axiosConfig = {
+    //   headers: {
+    //     auth: token,
+    //   },
+    // };
+    // axios
+    //   .post(`${baseUrl}restaurants/${itensNoCarrinho[0].restaurantName}/order`, 
+    //     body, 
+    //     axiosConfig)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     localStorage.setItem("carrinho", JSON.stringify(''))
+    //   })
+    //   .catch((error) => {
+    //     console.log(`${baseUrl}/profile`, body, axiosConfig);
+    //     alert(error)
+    //   });
+  };
 
 const carrinho = itensNoCarrinho.length !== 0 ? 
   <div>
@@ -153,7 +188,7 @@ return (
           <InputPagamento value="cartao" control={<Radio color="default" />} label="Cartão de crédito" />
         </RadioGroup>
       </FormControl>
-      <BotaoEntrar variant="contained" color="primary" >
+      <BotaoEntrar variant="contained" color="primary" onClick={fechaPedido} >
         Confirmar
       </BotaoEntrar>
     </PagamentosContainer>
