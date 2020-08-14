@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Button } from '@material-ui/core';
 
 export const CarrinhoContainer = styled.div`
   display: flex;
@@ -56,9 +58,9 @@ export const PedidosContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 20rem;
+  height: 13rem;
   overflow-y: scroll;
-  ::-webkit-scrollbar {
+  ::-webkit-scrollbar { /* Chrome */
     display: none;
   }
   -ms-overflow-style: none;  /* IE and Edge */
@@ -73,6 +75,9 @@ export const CardProduto = styled.div`
   border-radius: 8px;
   border: solid 1px #b8b8b8;
   margin-top: 0.8rem;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 `;
 
 export const FotoProduto = styled.img`
@@ -85,7 +90,7 @@ export const FotoProduto = styled.img`
   border-radius: 8px 0px 0px 8px;
   -moz-border-radius: 8px 0px 0px 8px;
   -webkit-border-radius: 8px 0px 0px 8px;
-  border: 0px solid #000000;
+  border: none;
 `;
 
 export const NomeProduto = styled.p`
@@ -127,6 +132,9 @@ export const QtdProduto = styled.p`
   border-radius: 0px 8px 0px 0px;
   -moz-border-radius: 0px 8px 0px 0px;
   -webkit-border-radius: 0px 8px 0px 0px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
   border: solid 1px #e8222e;
   height: 100%;
   margin: 0;
@@ -142,6 +150,9 @@ export const BotaoRemover = styled.button`
   border-radius: 8px 0px 8px 0px;
   -moz-border-radius: 8px 0px 8px 0px;
   -webkit-border-radius: 8px 0px 8px 0px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
   border: solid 1px #e8222e;
   height: 100%;
   margin: 0;
@@ -151,3 +162,62 @@ export const BotaoRemover = styled.button`
   cursor: pointer;
   color: #e8222e;
 `;
+
+export const TotaisContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  p{
+    margin: 0;
+  }
+`;
+
+export const SubtotalTexto = styled.div`
+  align-self: flex-end;
+  font-weight: 600;
+  letter-spacing: -0.39px;
+`;
+
+export const FreteTexto = styled.div`
+  font-weight: 600;
+  letter-spacing: -0.39px;
+`;
+
+export const PrecoTexto = styled.div`
+  color: #e8222e;
+  letter-spacing: -0.43px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+  text-align: right;
+`;
+export const PagamentosContainer = styled.div`
+  padding: 0 1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.39px;
+  p{
+    margin: 0;
+  }
+  hr{
+    margin: 0.5rem 0;
+  }
+`;
+export const InputPagamento = styled(FormControlLabel)`
+  margin: 0;
+  padding: 0;
+  height: 30px;
+`;
+
+export const BotaoEntrar = styled(Button)`
+  width: 21rem;
+  height: 3rem; 
+  margin: 0.5rem 0!important;
+  background-color: #e8222e;
+  border: 0;
+  border-radius: 2px;
+  color: black!important;
+  text-transform: none!important;
+  font-weight: 600!important;
+`; 
