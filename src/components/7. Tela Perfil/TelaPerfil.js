@@ -40,7 +40,6 @@ const TelaPerfil = () => {
       .get(`${baseUrl}/profile`, axiosConfig)
       .then((response) => {
         setProfile(response.data.user);
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -59,7 +58,6 @@ const TelaPerfil = () => {
       .get(`${baseUrl}/orders/history`, axiosConfig)
       .then((response) => {
         sethistoricoDePedidos(response.data.orders);
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);

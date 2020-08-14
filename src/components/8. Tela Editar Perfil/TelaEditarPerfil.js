@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.js';
-import { FormContainer, InputsLogin, InputsNome, BotaoSalvar } from './styles';
+import { 
+  FormContainer, 
+  InputsLogin, 
+  BotaoSalvar 
+} from './styles';
 import axios from 'axios';
 import AppHeader from '../AppHeader/index.js';
 import { useForm } from '../hooks/useForm.js';
-import TextField from "@material-ui/core/TextField";
 
 const baseUrl =
   'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB';
@@ -52,16 +55,13 @@ function TelaEditaPerfil() {
     axios
       .put(`${baseUrl}/profile`, body, axiosConfig)
       .then((response) => {
-        console.log(response.data);
-        alert('Perfil editado com sucesso');
         goToProfile();
       })
       .catch((error) => {
-        console.log(`${baseUrl}/profile`, body, axiosConfig);
         alert("errororor")
       });
   };
-//pegar perfil 
+
   const [profile, setProfile] = useState('');
   const getProfile = () => {
     const token = window.localStorage.getItem('token');
@@ -76,7 +76,6 @@ function TelaEditaPerfil() {
       .get(`${baseUrl}/profile`, axiosConfig)
       .then((response) => {
         setProfile(response.data.user);
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);
