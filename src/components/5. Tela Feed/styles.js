@@ -16,22 +16,45 @@ export const ContainerFeed = styled.div`
 `
 export const FeedTipos = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 3.2rem;
-    width: 22.5rem;
+    width: 20.8rem;
     align-items: center;
-    overflow: hidden;
+    padding-left: 1.6rem;
+    overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 ` 
 export const TipoPrato = styled.div`
     width: 5.438rem;
     height: 1.125rem;
+    padding: 0 5px;
     letter-spacing: -0.39px;
     text-align: center;
+    cursor: pointer;
+`
+export const TipoPratoVermelho = styled.div`
+    width: 5.438rem;
+    height: 1.125rem;
+    padding: 0 5px;
+    color: red;
+    letter-spacing: -0.39px;
+    text-align: center;
+    cursor: pointer;
 `
 export const ContainerRestaurantes = styled.div`
     height: 25rem;
     width: 22.5rem;
-    overflow: auto;
+    padding-left: 1.9rem;
+    overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 `
 export const CardRestaurante = styled.div`
     width: 20.5rem;
@@ -40,10 +63,16 @@ export const CardRestaurante = styled.div`
     border: solid 1px #b8b8b8;
     cursor: pointer;
 `
-export const FotoRestaurante = styled.img`
+export const FotoRestaurante = styled.div`
     width: 20.5rem;
     height: 7.5rem;
-    object-fit: contain;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+`
+export const Imagem = styled.img`
+    max-width: 100%;
+    align-self: center;
 `
 export const NomeRestaurante = styled.p`
     font-size: 10px;
@@ -53,4 +82,7 @@ export const TempoEntrega = styled.span`
 `
 export const FreteEntrega = styled.span`
     font-size: 10px;
+`
+export const ContainerBusca = styled.div`
+    height:31.2rem;
 `
