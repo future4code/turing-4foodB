@@ -2,6 +2,18 @@ import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField';
 import {Button} from '@material-ui/core'
 
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const InputsLogin = styled(TextField)`
+  width: 21rem;
+  height: 4rem;
+  margin: 0.5rem 1rem 0.5rem 1rem;
+`;
+
 export const FormContainerCadastro = styled.div`
   display: flex;
   flex-direction: column;

@@ -10,12 +10,41 @@ import {
   InputsCadastro, 
   BotaoCadastro, 
   LinkCadastro,
+  FormContainer,
+  InputsLogin
 } from './styles'
 import AppHeader from '../AppHeader';
 import { useForm } from '../hooks/useForm.js';
 
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  margin: {
+    margin: theme.spacing(1),
+  },
+  label: {
+    marginTop: theme.spacing(20),
+  },
+  textField: {
+    width: '21rem',
+  },
+}));
 
 const TelaCadastro = () => {
+  const classes = useStyles();
+
   const history = useHistory()
 
   const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/fourFoodB" 
@@ -28,17 +57,22 @@ const TelaCadastro = () => {
     history.push("/cadastro")
   }
 
-  const { form, onChange } = useForm ({
+  const [form, setform] = React.useState({
     name: "",
     email: "",
     cpf: "",
     password: "",
     confirmaPassword:""
   });
-
-  const handleInputChange = event => {
-    const { name, value } = event.target
-    onChange(name, value)
+  
+  const handleInputChange = (prop) => (event) => {
+    setform({ ...form, [prop]: event.target.value });
+  };
+  const handleClickShowPassword = () => {
+    setform({ ...form, showPassword: !form.showPassword });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   const checkPassword = () => {
@@ -52,7 +86,7 @@ const TelaCadastro = () => {
       }
   }
 
-  const handleFormValues = (event) => {
+  const handleFormform = (event) => {
     checkPassword()   
     event.preventDefault()   
   };
@@ -72,34 +106,35 @@ const TelaCadastro = () => {
       })
   };
     
-
+  
 return (
-  <FormContainerCadastro>
-    <AppHeader />  
+  <FormContainer className={classes.root} onSubmit={handleFormform}> 
     <LogoContainer
       src={logoinvert}
       alt="logotipo ifuture"
     />
+
     <TituloCadastro>Cadastrar</TituloCadastro>
-    <InputsCadastro onSubmit={handleFormValues}
+    <InputsLogin 
       required
       id="name"
       label="Nome"
+      type="text"
       variant="outlined"
       value={form.name}
-      onChange={handleInputChange}
+      onChange={handleInputChange('name')}
       placeholder="Nome e sobrenome"
-      name="name"
     />
-    <InputsCadastro
+
+    <InputsLogin
       required
       id="email"
       label="E-mail"
+      type="email"
       variant="outlined"
       value={form.email}
-      onChange={handleInputChange}
+      onChange={handleInputChange('email')}
       placeholder="email@email.com"
-      name="email"
     />
     
     <InputsCadastro
@@ -110,40 +145,59 @@ return (
       type="number"
       variant="outlined"
       value={form.cpf}
-      onChange={handleInputChange}
+      onChange={handleInputChange('cpf')}
       placeholder="000.000.000-00"
-      name="cpf"
     />
     
-    <InputsCadastro
-      className="style-input"
-      required
-      type="password"
-      id="password"
-      label="Senha"
-      variant="outlined"
-      value={form.password}
-      onChange={handleInputChange}
-      placeholder="Mínimo 6 caracteres"
-      name="password"
-    />
-      
-      <InputsCadastro
-      className="style-input"
-      required
-      type="password"
-      id="confirmaPassword"
-      label="Confirmar"
-      variant="outlined"
-      value={form.confirmaPassword}
-      onChange={handleInputChange}
-      placeholder="Confirme a senha anterior"
-      name="confirmaPassword"
-    /> 
+    <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      <InputLabel htmlFor="password">Senha</InputLabel>
+      <OutlinedInput
+        id="password"
+        type={form.showPassword ? 'text' : 'password'}
+        value={form.password}
+        onChange={handleInputChange('password')}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {form.showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }
+        labelWidth={70}
+      />
+    </FormControl>
+
+    <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      <InputLabel htmlFor="password">Confirmar</InputLabel>
+      <OutlinedInput
+        id="confirmaPassword"
+        type={form.showPassword ? 'text' : 'password'}
+        value={form.confirmaPassword}
+        onChange={handleInputChange('confirmaPassword')}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {form.showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }
+        labelWidth={70}
+      />
+    </FormControl>
         
-    <BotaoCadastro variant="contained" color="primary" onClick={handleFormValues}>Criar</BotaoCadastro>
+    <BotaoCadastro variant="contained" color="primary" onClick={handleFormform}>Criar</BotaoCadastro>
     <LinkCadastro to="/cadastro"></LinkCadastro>
-  </FormContainerCadastro>
+  </FormContainer>
 )}
 
 export default TelaCadastro
